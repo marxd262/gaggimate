@@ -82,10 +82,43 @@ def build_release_phase() -> dict:
     }
 
 def build_test_unit(pressure_target: float, flow_variant: FlowVariant) -> list[dict]:
-    pass
+    phases = [
+        build_pressure_phase(pressure_target),
+        build_stabilize_phase(),
+    ]
+    if isinstance(flow_variant, tuple):
+        _label, start_flow, end_flow = flow_variant
+        phases.append(build_anchor_phase(start_flow))
+        phases.append(build_declining_flow_phase(end_flow))
+    else:
+        phases.append(build_flow_phase(flow_variant))
+    phases.append(build_release_phase())
+    return phases
+
 
 def build_profile(seed: int) -> dict:
-    pass
+    combinations = [
+        (pressure, flow)
+        for pressure in PRESSURE_TARGETS
+        for flow in FLOW_VARIANTS
+    ]
+    rng = random.Random(seed)
+    rng.shuffle(combinations)
+
+    phases = []
+    for pressure, flow in combinations:
+        phases.extend(build_test_unit(pressure, flow))
+
+    return {
+        "label": f"SP Test v{seed + 1} (seed {seed})",
+        "type": "pro",
+        "description": (
+            f"Start pressure test profile, variant {seed + 1}. "
+            f"48 combinations (8 pressures × 6 flow variants) randomized with seed {seed}."
+        ),
+        "temperature": TEMPERATURE,
+        "phases": phases,
+    }
 
 
 def main():
