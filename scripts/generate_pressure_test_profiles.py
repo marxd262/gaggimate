@@ -126,7 +126,7 @@ def main():
     for seed in range(NUM_VARIANTS):
         profile = build_profile(seed)
         path = OUTPUT_DIR / f"sp-test-v{seed + 1}.json"
-        path.write_text(json.dumps(profile, indent=2))
+        path.write_text(json.dumps(profile, indent=2), encoding="utf-8")
         print(f"Wrote {path} ({len(profile['phases'])} phases)")
 
 
