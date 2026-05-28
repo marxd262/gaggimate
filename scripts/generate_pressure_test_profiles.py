@@ -1,35 +1,87 @@
 import json
 import random
 from pathlib import Path
+from typing import Union
 
 PRESSURE_TARGETS = [0.3, 1.0, 1.5, 2.0, 4.0, 6.0, 8.0, 11.0]
 FLOW_CONSTANTS   = [1.5, 2.0, 2.5, 4.0, 6.0]
 FLOW_DECLINING   = ("6to2", 6.0, 2.0)   # (label, start_g_s, end_g_s)
-FLOW_VARIANTS    = FLOW_CONSTANTS + [FLOW_DECLINING]
+FlowVariant = Union[float, tuple]
+FLOW_VARIANTS: list[FlowVariant] = FLOW_CONSTANTS + [FLOW_DECLINING]
 TEMPERATURE      = 93
 NUM_VARIANTS     = 6
 OUTPUT_DIR       = Path(__file__).parent.parent / "data" / "p"
 
 
 def build_pressure_phase(pressure_target: float) -> dict:
-    pass
+    return {
+        "name": f"Build {pressure_target} bar",
+        "phase": "preinfusion",
+        "valve": 0,
+        "duration": 30,
+        "temperature": 0,
+        "transition": {"type": "ease-out", "duration": 25, "adaptive": False},
+        "pump": {"target": "pressure", "pressure": pressure_target, "flow": 0},
+        "targets": [{"type": "pressure", "operator": "gte", "value": pressure_target}],
+    }
+
 
 def build_stabilize_phase() -> dict:
-    pass
+    return {
+        "name": "Stabilize",
+        "phase": "preinfusion",
+        "valve": 0,
+        "duration": 2,
+        "temperature": 0,
+        "pump": 0,
+    }
+
 
 def build_flow_phase(flow_rate: float) -> dict:
-    pass
+    return {
+        "name": f"Extract {flow_rate} g/s",
+        "phase": "brew",
+        "valve": 1,
+        "duration": 5,
+        "temperature": 0,
+        "pump": {"target": "flow", "pressure": 0, "flow": flow_rate},
+    }
+
 
 def build_anchor_phase(flow_rate: float) -> dict:
-    pass
+    return {
+        "name": f"Anchor {flow_rate} g/s",
+        "phase": "brew",
+        "valve": 1,
+        "duration": 0.5,
+        "temperature": 0,
+        "pump": {"target": "flow", "pressure": 0, "flow": flow_rate},
+    }
+
 
 def build_declining_flow_phase(end_flow: float) -> dict:
-    pass
+    return {
+        "name": f"Decline to {end_flow} g/s",
+        "phase": "brew",
+        "valve": 1,
+        "duration": 5,
+        "temperature": 0,
+        "transition": {"type": "linear", "duration": 5, "adaptive": False},
+        "pump": {"target": "flow", "pressure": 0, "flow": end_flow},
+    }
+
 
 def build_release_phase() -> dict:
-    pass
+    return {
+        "name": "Release",
+        "phase": "brew",
+        "valve": 1,
+        "duration": 2,
+        "temperature": 0,
+        "pump": 0,
+    }
 
-def build_test_unit(pressure_target: float, flow_variant) -> list:
+def build_test_unit(pressure_target: float, flow_variant: FlowVariant) -> list[dict]:
     pass
 
 def build_profile(seed: int) -> dict:
