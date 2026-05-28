@@ -6,7 +6,7 @@ from typing import Union
 PRESSURE_TARGETS = [0.3, 1.0, 1.5, 2.0, 4.0, 6.0, 8.0, 11.0]
 FLOW_CONSTANTS   = [1.5, 2.0, 2.5, 4.0, 6.0]
 FLOW_DECLINING   = ("6to2", 6.0, 2.0)   # (label, start_g_s, end_g_s)
-FlowVariant = Union[float, tuple]
+FlowVariant = Union[float, tuple[str, float, float]]
 FLOW_VARIANTS: list[FlowVariant] = FLOW_CONSTANTS + [FLOW_DECLINING]
 TEMPERATURE      = 93
 NUM_VARIANTS     = 6
@@ -15,7 +15,7 @@ OUTPUT_DIR       = Path(__file__).parent.parent / "data" / "p"
 
 def build_pressure_phase(pressure_target: float) -> dict:
     return {
-        "name": f"Build {pressure_target} bar",
+        "name": f"Build {pressure_target:.1f} bar",
         "phase": "preinfusion",
         "valve": 0,
         "duration": 30,
@@ -39,7 +39,7 @@ def build_stabilize_phase() -> dict:
 
 def build_flow_phase(flow_rate: float) -> dict:
     return {
-        "name": f"Extract {flow_rate} g/s",
+        "name": f"Extract {flow_rate:.1f} g/s",
         "phase": "brew",
         "valve": 1,
         "duration": 5,
@@ -50,7 +50,7 @@ def build_flow_phase(flow_rate: float) -> dict:
 
 def build_anchor_phase(flow_rate: float) -> dict:
     return {
-        "name": f"Anchor {flow_rate} g/s",
+        "name": f"Anchor {flow_rate:.1f} g/s",
         "phase": "brew",
         "valve": 1,
         "duration": 0.5,
@@ -61,7 +61,7 @@ def build_anchor_phase(flow_rate: float) -> dict:
 
 def build_declining_flow_phase(end_flow: float) -> dict:
     return {
-        "name": f"Decline to {end_flow} g/s",
+        "name": f"Decline to {end_flow:.1f} g/s",
         "phase": "brew",
         "valve": 1,
         "duration": 5,
