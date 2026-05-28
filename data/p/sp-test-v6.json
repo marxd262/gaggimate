@@ -1,0 +1,2640 @@
+{
+  "label": "SP Test v6 (seed 5)",
+  "type": "pro",
+  "description": "Start pressure test profile, variant 6. 48 combinations (8 pressures \u00d7 6 flow variants) randomized with seed 5.",
+  "temperature": 93,
+  "phases": [
+    {
+      "name": "Build 1.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 1.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Anchor 6.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 0.5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 6.0
+      }
+    },
+    {
+      "name": "Decline to 2.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "transition": {
+        "type": "linear",
+        "duration": 5,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 2.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 6.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 6.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 6.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 6.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 6.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 1.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 1.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 4.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 4.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 8.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 8.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 8.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 6.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 6.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 4.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 4.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 4.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 2.5 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 2.5
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 6.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 6.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 6.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 2.5 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 2.5
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 11.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 11.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 11.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 2.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 2.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 2.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 2.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 4.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 4.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 11.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 11.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 11.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 6.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 6.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 8.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 8.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 8.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 2.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 2.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 2.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 2.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 2.5 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 2.5
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 11.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 11.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 11.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 4.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 4.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 8.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 8.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 8.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 2.5 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 2.5
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 11.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 11.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 11.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 1.5 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 1.5
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 4.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 4.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 4.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 2.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 2.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 4.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 4.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 4.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 6.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 6.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 1.5 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 1.5,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 1.5
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Anchor 6.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 0.5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 6.0
+      }
+    },
+    {
+      "name": "Decline to 2.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "transition": {
+        "type": "linear",
+        "duration": 5,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 2.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 2.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 2.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 2.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 2.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 1.5 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 1.5,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 1.5
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 2.5 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 2.5
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 0.3 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 0.3,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 0.3
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 6.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 6.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 0.3 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 0.3,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 0.3
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 2.5 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 2.5
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 4.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 4.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 4.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 4.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 4.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 1.5 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 1.5,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 1.5
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 1.5 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 1.5
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 0.3 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 0.3,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 0.3
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Anchor 6.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 0.5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 6.0
+      }
+    },
+    {
+      "name": "Decline to 2.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "transition": {
+        "type": "linear",
+        "duration": 5,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 2.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 1.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 1.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 2.5 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 2.5
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 1.5 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 1.5,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 1.5
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 2.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 2.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 6.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 6.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 6.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 2.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 2.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 6.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 6.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 6.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Anchor 6.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 0.5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 6.0
+      }
+    },
+    {
+      "name": "Decline to 2.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "transition": {
+        "type": "linear",
+        "duration": 5,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 2.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 0.3 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 0.3,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 0.3
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 1.5 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 1.5
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 8.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 8.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 8.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 1.5 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 1.5
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 2.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 2.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 1.5 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 1.5
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 1.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 1.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 1.5 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 1.5
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 4.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 4.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 4.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 1.5 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 1.5
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 11.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 11.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 11.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Anchor 6.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 0.5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 6.0
+      }
+    },
+    {
+      "name": "Decline to 2.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "transition": {
+        "type": "linear",
+        "duration": 5,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 2.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 6.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 6.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 6.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 1.5 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 1.5
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 2.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 2.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Anchor 6.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 0.5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 6.0
+      }
+    },
+    {
+      "name": "Decline to 2.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "transition": {
+        "type": "linear",
+        "duration": 5,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 2.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 1.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 1.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 2.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 2.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 1.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 1.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 6.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 6.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 0.3 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 0.3,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 0.3
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 4.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 4.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 1.5 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 1.5,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 1.5
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 4.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 4.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 4.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 4.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 4.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Anchor 6.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 0.5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 6.0
+      }
+    },
+    {
+      "name": "Decline to 2.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "transition": {
+        "type": "linear",
+        "duration": 5,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 2.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 0.3 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 0.3,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 0.3
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 2.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 2.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 6.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 6.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 6.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 4.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 4.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 8.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 8.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 8.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Anchor 6.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 0.5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 6.0
+      }
+    },
+    {
+      "name": "Decline to 2.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "transition": {
+        "type": "linear",
+        "duration": 5,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 2.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 11.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 11.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 11.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 2.5 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 2.5
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 2.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 2.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 6.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 6.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 1.5 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 1.5,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 1.5
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 6.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 6.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Build 8.0 bar",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 30,
+      "temperature": 0,
+      "transition": {
+        "type": "ease-out",
+        "duration": 25,
+        "adaptive": false
+      },
+      "pump": {
+        "target": "pressure",
+        "pressure": 8.0,
+        "flow": 0
+      },
+      "targets": [
+        {
+          "type": "pressure",
+          "operator": "gte",
+          "value": 8.0
+        }
+      ]
+    },
+    {
+      "name": "Stabilize",
+      "phase": "preinfusion",
+      "valve": 0,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    },
+    {
+      "name": "Extract 4.0 g/s",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 5,
+      "temperature": 0,
+      "pump": {
+        "target": "flow",
+        "pressure": 0,
+        "flow": 4.0
+      }
+    },
+    {
+      "name": "Release",
+      "phase": "brew",
+      "valve": 1,
+      "duration": 2,
+      "temperature": 0,
+      "pump": 0
+    }
+  ]
+}
