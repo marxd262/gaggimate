@@ -1,6 +1,7 @@
 #include "LedControlPlugin.h"
 #include <display/core/Controller.h>
 #include <display/core/Event.h>
+#include <display/util/ColorConversion.h>
 
 void LedControlPlugin::setup(Controller *controller, PluginManager *pluginManager) {
     this->controller = controller;
@@ -25,20 +26,24 @@ void LedControlPlugin::updateControl() {
         return;
     }
     if (this->controller->isActive() && mode == MODE_BREW) {
-        sendControl(0, 0, 255, 20, settings.getSunriseExtBrightness());
+        sendControl(settings.getSunriseActive(), settings.getSunriseExtBrightness());
         return;
     }
     if (this->controller->getLastProcess() != nullptr && this->controller->getLastProcess()->getType() == MODE_BREW &&
         mode == MODE_BREW) {
-        sendControl(0, 255, 0, 20, settings.getSunriseExtBrightness());
+        sendControl(settings.getSunriseFinished(), settings.getSunriseExtBrightness());
         return;
     }
-    if (this->controller->isLowWaterLevel()) {
-        sendControl(255, 0, 0, 20, settings.getSunriseExtBrightness());
+    if (this->controller->isLowWaterLevel() || this->controller->isErrorState()) {
+        sendControl(settings.getSunriseError(), settings.getSunriseExtBrightness());
         return;
     }
-    sendControl(settings.getSunriseR(), settings.getSunriseG(), settings.getSunriseB(), settings.getSunriseW(),
-                settings.getSunriseExtBrightness());
+    sendControl(settings.getSunriseIdle(), settings.getSunriseExtBrightness());
+}
+
+void LedControlPlugin::sendControl(String hexColor, uint8_t ext) {
+    ColorConversion::Rgbw duty = ColorConversion::fromHex(hexColor);
+    sendControl(duty.r, duty.g, duty.b, duty.w, ext);
 }
 
 void LedControlPlugin::sendControl(uint8_t r, uint8_t g, uint8_t b, uint8_t w, uint8_t ext) {

@@ -114,7 +114,7 @@ class Controller {
 #endif
     void setupBluetooth();
     void onSystemInfo(const char *hardware, const char *version, uint32_t protocolVersion, bool dimming, bool pressure,
-                      bool ledControl, bool tof);
+                      bool ledControl, bool tof, std::vector<uint32_t> addons);
     // Connected to a controller too old to speak the framed protocol: drive the
     // same path as a protocol-version mismatch (OTA recovery only). infoJson is
     // the legacy INFO characteristic contents (hardware/version/capabilities).
@@ -182,6 +182,11 @@ class Controller {
     bool updating = false;
     bool autotuning = false;
     bool isApConnection = false;
+    // WiFi up/down is signalled (flag only) from the Arduino WiFi event task and
+    // acted on in loop(): doing server/socket/mDNS start-stop in that small-stack
+    // callback corrupted the heap under load. See setupWifi() + loop().
+    volatile bool wifiConnectedPending = false;
+    volatile bool wifiDisconnectedPending = false;
     bool initialized = false;
     bool screenReady = false;
     bool waitingForController = false;
