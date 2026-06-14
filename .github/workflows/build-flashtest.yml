@@ -1,0 +1,82 @@
+on:
+  push:
+    branches:
+      - "flashTest"
+
+permissions:
+  contents: write
+
+name: Build FlashTest
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          fetch-tags: true
+          fetch-depth: 0
+          submodules: 'recursive'
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/pip
+            ~/.platformio/.cache
+          key: ${{ runner.os }}-pio
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install PlatformIO Core
+        run: pip install --upgrade platformio
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+          cache-dependency-path: web/package-lock.json
+      - name: Add version
+        run: |
+          mkdir -p out
+          git describe --tags --dirty > out/version.txt
+      - name: Build Web
+        run: ./scripts/build_spiffs.sh
+      - name: Build controller
+        run: |
+          pio run -e controller
+          cp .pio/build/controller/firmware.bin out/board-firmware.bin
+      - name: Build display FS
+        run: |
+          pio run -t buildfs -e display
+          cp .pio/build/display/littlefs.bin out/display-filesystem.bin
+      - name: Build display
+        run: |
+          pio run -e display
+          cp .pio/build/display/firmware.bin out/display-firmware.bin
+      - name: Archive Firmware Files
+        uses: actions/upload-artifact@v4
+        with:
+          name: gaggimate-flashtest-firmware
+          path: "out/*"
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download Firmware Files
+        uses: actions/download-artifact@v4
+        with:
+          name: gaggimate-flashtest-firmware
+          path: release
+      - name: Publish FlashTest Release
+        uses: andelf/nightly-release@c5ed4bdb7c1da04a4fa1e40bc5e67306f682563b
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: nightly
+          name: 'FlashTest Build $$'
+          prerelease: true
+          body: 'Latest FlashTest build from the flashTest branch.'
+          files: |
+            release/*
