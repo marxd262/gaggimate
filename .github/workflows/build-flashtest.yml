@@ -37,6 +37,9 @@ jobs:
       - name: Add version
         run: |
           mkdir -p out
+          # Create a seed tag if the fork has no tags so git describe doesn't fail.
+          # v99.0.0 ensures devices always see this build as newer and OTA triggers.
+          git tag v99.0.0 2>/dev/null || true
           git describe --tags --dirty > out/version.txt
       - name: Build Web
         run: ./scripts/build_spiffs.sh
