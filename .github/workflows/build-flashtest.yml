@@ -42,7 +42,7 @@ jobs:
           git tag v99.0.0 2>/dev/null || true
           git describe --tags --dirty > out/version.txt
       - name: Build Web
-        run: ./scripts/build_spiffs.sh
+        run: ./scripts/build_webui.sh
       - name: Build controller
         run: |
           pio run -e controller
