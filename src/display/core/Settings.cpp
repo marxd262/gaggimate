@@ -111,6 +111,7 @@ Settings::Settings() {
     emptyTankDistance = preferences.getInt("sr_ed", 210);
     fullTankDistance = preferences.getInt("sr_fd", 30);
     altRelayFunction = preferences.getInt("alt_relay", ALT_RELAY_GRIND);
+    customOTAURL= preferences.getString("custom_ota_url", "");
 
     commutationGain = preferences.getFloat("p_cm", DEFAULT_COMMUTATION_GAIN);
     convergenceGain = preferences.getFloat("p_cv", DEFAULT_CONVERGENCE_GAIN);
@@ -230,6 +231,10 @@ void Settings::setVolumetricTarget(bool volumetric_target) {
 
 void Settings::setOTAChannel(const String &otaChannel) {
     this->otaChannel = otaChannel;
+    save();
+}
+void Settings::setCustomOTAUrl(const String &customOtaURL) {
+    this->customOTAURL = customOtaURL;
     save();
 }
 
@@ -581,6 +586,7 @@ void Settings::doSave() {
     preferences.putFloat("p_cv", convergenceGain);
     preferences.putFloat("p_ig", integralGain);
     preferences.putFloat("p_mp", maxPumpPower);
+    preferences.putString("custom_ota_url", customOTAURL);
 
     preferences.end();
 }

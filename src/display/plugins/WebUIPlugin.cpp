@@ -59,7 +59,7 @@ void WebUIPlugin::setup(Controller *_controller, PluginManager *_pluginManager) 
     this->pluginManager = _pluginManager;
     this->ota = new GitHubOTA(
         BUILD_GIT_VERSION, controller->getSystemInfo().version,
-        RELEASE_URL + (controller->getSettings().getOTAChannel() == "latest" ? "latest" : "tag/nightly"),
+        createOtaURL(),
         [this](uint8_t phase) {
             pluginManager->trigger("ota:update:phase", "phase", phase);
             updateOTAProgress(phase, 0);
@@ -102,6 +102,14 @@ void WebUIPlugin::setup(Controller *_controller, PluginManager *_pluginManager) 
                       [this](Event const &event) { this->currentBluetoothWeight = event.getFloat("value"); });
 
     setupServer();
+}
+
+String WebUIPlugin::createOtaURL(){
+    auto releaseURL = controller->getSettings().getCustomOTAURL().isEmpty() ? RELEASE_URL : controller->getSettings().getCustomOTAURL();
+    if (!releaseURL.endsWith("/")) {
+        releaseURL += "/";
+    }
+    return releaseURL + (controller->getSettings().getOTAChannel() == "latest" ? "latest" : "tag/nightly");
 }
 
 void WebUIPlugin::loop() {
@@ -446,9 +454,13 @@ void WebUIPlugin::handleWebSocketData(AsyncWebSocket *server, AsyncWebSocketClie
 
 void WebUIPlugin::handleOTASettings(uint32_t clientId, JsonDocument &request) {
     if (request["update"].as<bool>()) {
+        if (!request["customOTAURL"].isNull()) {
+            controller->getSettings().setCustomOTAUrl(request["customOTAURL"].as<String>());
+        }
         if (!request["channel"].isNull()) {
             controller->getSettings().setOTAChannel(request["channel"].as<String>() == "latest" ? "latest" : "nightly");
-            ota->setReleaseUrl(RELEASE_URL + (controller->getSettings().getOTAChannel() == "latest" ? "latest" : "tag/nightly"));
+
+            ota->setReleaseUrl(createOtaURL());
             lastUpdateCheck = 0;
         }
     }
@@ -558,9 +570,9 @@ void WebUIPlugin::handleProfileRequest(uint32_t clientId, JsonDocument &request)
     ws.text(clientId, buffer);
 }
 
-void WebUIPlugin::handleSettings(AsyncWebServerRequest *request) const {
+void WebUIPlugin::handleSettings(AsyncWebServerRequest *request) {
     if (request->method() == HTTP_POST) {
-        controller->getSettings().batchUpdate([request](Settings *settings) {
+        controller->getSettings().batchUpdate([this, request](Settings *settings) {
             if (request->hasArg("startupMode"))
                 settings->setStartupMode(request->arg("startupMode") == "brew" ? MODE_BREW : MODE_STANDBY);
             if (request->hasArg("startupProfile"))
@@ -644,6 +656,11 @@ void WebUIPlugin::handleSettings(AsyncWebServerRequest *request) const {
                 settings->setFullTankDistance(request->arg("fullTankDistance").toInt());
             if (request->hasArg("altRelayFunction"))
                 settings->setAltRelayFunction(request->arg("altRelayFunction").toInt());
+            if (request->hasArg("customOTAURL")) {
+                settings->setCustomOTAUrl(request->arg("customOTAURL"));
+                ota->setReleaseUrl(createOtaURL()   );
+                lastUpdateCheck = 0;
+            }
             if (request->hasArg("buttonBehavior"))
                 settings->setButtonBehaviorList(explode(request->arg("buttonBehavior"), ','));
             if (request->hasArg("commutationGain"))
@@ -760,6 +777,8 @@ void WebUIPlugin::handleSettings(AsyncWebServerRequest *request) const {
     doc["integralGain"] = settings.getIntegralGain();
     doc["maxPumpPower"] = settings.getMaxPumpPower();
 
+    doc["customOTAURL"] = settings.getCustomOTAURL();
+
     // Add schedule format with days
     std::vector<AutoWakeupSchedule> autowakeupSchedules = settings.getAutoWakeupSchedules();
     String schedulesStr = "";
@@ -851,7 +870,7 @@ void WebUIPlugin::updateOTAStatus(const String &version) {
     JsonDocument doc(&psramAllocator);
     doc["latestVersion"] = ota->getCurrentVersion();
     doc["tp"] = "res:ota-settings";
-    doc["displayUpdateAvailable"] = ota->isUpdateAvailable(false);
+    doc["customOTAURL"] = settings.getCustomOTAURL();
     doc["controllerUpdateAvailable"] = ota->isUpdateAvailable(true);
     doc["displayVersion"] = BUILD_GIT_VERSION;
     doc["controllerVersion"] = controller->getSystemInfo().version;

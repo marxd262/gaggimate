@@ -25,6 +25,7 @@ class WebUIPlugin : public Plugin {
   public:
     WebUIPlugin();
     void setup(Controller *controller, PluginManager *pluginManager) override;
+    String createOtaURL();
     void loop() override;
 
   private:
@@ -42,7 +43,7 @@ class WebUIPlugin : public Plugin {
     void handleFlushStart(uint32_t clientId, JsonDocument &request);
 
     // HTTP handlers
-    void handleSettings(AsyncWebServerRequest *request) const;
+    void handleSettings(AsyncWebServerRequest *request);
     void handleBLEScaleList(AsyncWebServerRequest *request);
     void handleBLEScaleScan(AsyncWebServerRequest *request);
     void handleBLEScaleConnect(AsyncWebServerRequest *request);

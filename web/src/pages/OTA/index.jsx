@@ -101,7 +101,7 @@ export function OTA() {
       setSubmitting(true);
       const form = formRef.current;
       const formData = new FormData(form);
-      apiService.send({ tp: 'req:ota-settings', update: true, channel: formData.get('channel') });
+      apiService.send({ tp: 'req:ota-settings', update: true, channel: formData.get('channel'), customOTAURL: formData.get('customOTAURL') });
       setSubmitting(true);
     },
     [setFormData, formRef],
@@ -164,20 +164,32 @@ export function OTA() {
       <form key='ota' method='post' action='/api/ota' ref={formRef} onSubmit={onSubmit}>
         <div className='grid grid-cols-1 gap-4 lg:grid-cols-12'>
           <Card sm={12} title='System Information'>
-            <div className='flex flex-col space-y-4'>
-              <label htmlFor='channel' className='mb-2 block text-sm font-medium'>
-                Update Channel
-              </label>
-              <select id='channel' name='channel' className='select select-bordered w-full'>
-                <option value='latest' selected={formData.channel === 'latest'}>
-                  Stable
-                </option>
-                <option value='nightly' selected={formData.channel === 'nightly'}>
-                  Nightly
-                </option>
-              </select>
-            </div>
-
+              <div className='flex flex-col space-y-4'>
+                  <label htmlFor='channel' className='mb-2 block text-sm font-medium'>
+                      Update Channel
+                  </label>
+                  <select id='channel' name='channel' className='select select-bordered w-full'>
+                      <option value='latest' selected={formData.channel === 'latest'}>
+                          Stable
+                      </option>
+                      <option value='nightly' selected={formData.channel === 'nightly'}>
+                          Nightly
+                      </option>
+                  </select>
+              </div>
+              <div className='flex flex-col space-y-4'>
+                  <label htmlFor='customOTAURL' className='mb-2 block text-sm font-medium'>
+                      Custom URL
+                  </label>
+                  <input
+                      id='customOTAURL'
+                      name='customOTAURL'
+                      type='text'
+                      className='input input-bordered w-full'
+                      placeholder='Custom URL for OTA'
+                      value={formData.customOTAURL}
+                  />
+              </div>
             <div className='flex flex-col space-y-4'>
               <label className='mb-2 block text-sm font-medium'>Hardware</label>
               <span className='font-light'>{formData.hardware}</span>
