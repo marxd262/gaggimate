@@ -37,10 +37,12 @@ jobs:
       - name: Add version
         run: |
           mkdir -p out
-          # Create a seed tag if the fork has no tags so git describe doesn't fail.
-          # v99.0.0 ensures devices always see this build as newer and OTA triggers.
-          git tag v99.0.0 2>/dev/null || true
-          git describe --tags --dirty > out/version.txt
+          # Tag each build with a timestamp so the version always increments.
+          # OTA compares server version vs device version — if they match, no update fires.
+          # Using v99.YYYYMMDD.HHMMSSs means every build is strictly newer than the last.
+          BUILD_TAG="v99.$(date -u +%Y%m%d).$(date -u +%H%M%S)"
+          git tag "$BUILD_TAG"
+          git describe --tags > out/version.txt
       - name: Build Web
         run: ./scripts/build_webui.sh
       - name: Build controller
