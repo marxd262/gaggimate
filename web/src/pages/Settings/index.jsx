@@ -3,10 +3,11 @@ import { faFileImport } from '@fortawesome/free-solid-svg-icons/faFileImport';
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons/faEllipsisVertical';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useCallback, useEffect, useRef, useState } from 'preact/hooks';
-import { useRoute } from 'preact-iso';
+import { useLocation, useRoute } from 'preact-iso';
 import { Plural, Trans, useLingui } from '@lingui/react/macro';
 import { t } from '@lingui/core/macro';
 import {
+  machine,
   prefetchSettings,
   updateSettingsCache,
   getCachedSettings,
@@ -17,6 +18,7 @@ import {
   setClock24h,
 } from '../../utils/dashboardManager.js';
 import { downloadJson } from '../../utils/download.js';
+import { validateTankCalibration } from '../../utils/waterLevel.js';
 import { getStoredTheme, handleThemeChange } from '../../utils/themeManager.js';
 
 import PageLayout from '../../components/PageLayout.jsx';
@@ -256,6 +258,7 @@ function buildSubmitFormData(formData, autowakeupSchedules, restart) {
 export function Settings() {
   const { t } = useLingui();
   const { params } = useRoute();
+  const { route } = useLocation();
   const tab = params.tab || 'general';
   const isFormTab = ['general', 'machine', 'plugins'].includes(tab);
 
@@ -389,6 +392,20 @@ export function Settings() {
   const onSubmit = useCallback(
     async (e, restart = false) => {
       if (e) e.preventDefault();
+      // Save & Restart and imports skip native validation, and the tank fields are only mounted on the Machine tab.
+      const tankErrors = validateTankCalibration(
+        formData.emptyTankDistance,
+        formData.fullTankDistance,
+      );
+      if (
+        !isLoading &&
+        machine.value.capabilities.ledControl &&
+        (tankErrors.empty || tankErrors.full)
+      ) {
+        if (tab === 'machine') formRef.current.reportValidity();
+        else route('/settings/machine');
+        return;
+      }
       setSubmitting(true);
       const form = formRef.current;
       const formDataToSubmit = buildSubmitFormData(formData, autowakeupSchedules, restart);
@@ -420,7 +437,7 @@ export function Settings() {
         setSubmitting(false);
       }
     },
-    [formData, autowakeupSchedules],
+    [formData, autowakeupSchedules, tab, route, isLoading],
   );
 
   const onExport = useCallback(() => {
